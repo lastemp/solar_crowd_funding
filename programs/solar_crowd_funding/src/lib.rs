@@ -24,4 +24,18 @@ pub mod solar_crowd_funding {
     ) -> Result<()> {
         instructions::register_investor(ctx, &params)
     }
+
+    pub fn register_institution(
+        ctx: Context<RegisterInstitution>,
+        params: RegisterInstitutionParams,
+    ) -> Result<()> {
+        instructions::register_institution(ctx, &params)
+    }
+
+    pub fn invest_in_project(
+        ctx: Context<InvestProject>,
+        params: InvestProjectParams,
+    ) -> Result<()> {
+        instructions::invest_in_project(ctx, &params)
+    }
 }
