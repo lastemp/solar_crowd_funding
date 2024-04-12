@@ -45,10 +45,11 @@ pub struct InitParams {
     pub project_name: String,      // project name
     pub country: String,           // home country where project is implemented
     pub project_funds: u32,        // funds needed for completion of project
+    pub bill_amount: u32, // this is the amount meant to be paid(monthly basis) by institution that acquired solar project
 }
 
 // project reference length
-const PROJECT_REFERENCE_LENGTH: usize = 10;
+const PROJECT_REFERENCE_LENGTH: usize = 20;
 // project name length
 const PROJECT_NAME_LENGTH: usize = 30;
 // country length
@@ -78,6 +79,9 @@ pub fn init(ctx: Context<Init>, params: &InitParams) -> Result<()> {
     if params.project_funds == 0 {
         return Err(SolarCrowdFundingError::InvalidProjectFunds.into());
     }
+    if params.bill_amount == 0 {
+        return Err(SolarCrowdFundingError::InvalidProjectBillAmount.into());
+    }
 
     let deposit_account = &mut ctx.accounts.admin_deposit_account;
     let project = &mut ctx.accounts.project;
@@ -93,8 +97,10 @@ pub fn init(ctx: Context<Init>, params: &InitParams) -> Result<()> {
     project.project_name = params.project_name.to_string();
     project.country = params.country.to_string();
     project.project_funds = params.project_funds;
+    project.bill_amount = params.bill_amount;
     project.active = true;
     project.is_initialized = true;
+    project.is_launched = true;
 
     Ok(())
 }

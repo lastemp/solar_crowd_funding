@@ -17,6 +17,10 @@ pub enum SolarCrowdFundingError {
     InvalidAmount,
     #[msg("Project funds fully raised.")]
     DeclineInvestorFunds,
+    #[msg("Invalid project bill amount.")]
+    InvalidProjectBillAmount,
+    #[msg("Amount paid is not equal to project bill amount set.")]
+    InvalidProjectBillAmountPaid,
 
     // investor
     #[msg("Invalid full names length")]

@@ -38,4 +38,8 @@ pub mod solar_crowd_funding {
     ) -> Result<()> {
         instructions::invest_in_project(ctx, &params)
     }
+
+    pub fn pay_solar_bill(ctx: Context<PaySolarBill>, params: PaySolarBillParams) -> Result<()> {
+        instructions::pay_solar_bill(ctx, &params)
+    }
 }
