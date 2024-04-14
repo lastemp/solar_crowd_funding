@@ -1,3 +1,13 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+solar_crowd_funding = "HNMc2VpNfvPxLizJchUZG5G8tzyFSLfEhShnECiB8EHB"
+
+[registry]
+url = "https://api.apr.dev"
+
 [provider]
 cluster = "Localnet"
 wallet = "~/.config/solana/id.json"
